@@ -18,6 +18,7 @@
         <form action="/game"  method="POST" >
           @csrf
           <input type="hidden" name="machineNumber" value="{{ $machineNumber }}">
+          <input type="hidden" name="tries" value="{{ $tries }}">
           <label>choose your number</label>
           <input type="number" id="numberChoice" name="numberChoice" min="0" max="100">
           <button type="submit">Submit</button>

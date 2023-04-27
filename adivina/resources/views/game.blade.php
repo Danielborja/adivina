@@ -15,6 +15,11 @@
     </head>
     <body class="antialiased">
 
-
+    <form action="/choice"  method="POST" >
+    @csrf
+    <input type="hidden" name="machineNumber" value="{{ $machineNumber }}">
+    <input type="hidden" name="tries" value="{{ $tries }}">
+    <a><button type="submit" class="btn btn-success" >Try again</button></a>
+    </form>
     </body>
 </html>

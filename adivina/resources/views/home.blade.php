@@ -15,11 +15,11 @@
                     @endif
 
                     {{ __('You are logged in!') }}
-                    <form action="/choice"  method="GET">
+                    <form action="/choice"  method="POST">
                         @csrf
                         <input type="hidden" name="machineNumber" value="{{ $machineNumber }}">
+                        <input type="hidden" name="tries" value="{{ $tries }}">
                         <button style="width: 150px; height: 50px;" value="0"; name="choice">🎮</button>
-                        dd{{$machineNumber}}
                     </form>
                 </div>
             </div>

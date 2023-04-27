@@ -21,5 +21,5 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/choice', [App\Http\Controllers\GameController::class, 'choice'])->name('choice');
+Route::post('/choice', [App\Http\Controllers\GameController::class, 'choice'])->name('choice');
 Route::post('/game', [App\Http\Controllers\GameController::class, 'game'])->name('game');

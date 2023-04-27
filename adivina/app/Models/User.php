@@ -20,12 +20,11 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
-        'password'
+        'password',
+        'wins',
+        'losses'
     ];
 
-    public function stats(){
-        return $this->hasOne(Stat::class);
-    }
 
     /**
      * The attributes that should be hidden for serialization.

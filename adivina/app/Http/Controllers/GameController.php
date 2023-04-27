@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use App\Models\User;
+
+
 
 class GameController extends Controller
 {
@@ -12,21 +16,55 @@ class GameController extends Controller
     public function choice(Request $request)
     {
         $machineNumber = $request->machineNumber;
-        return view ("choice",compact('machineNumber'));  
+        $tries = $request->tries;
+        return view ("choice",compact('machineNumber','tries'));  
     }
 
     /**
      * Show the form for creating a new resource.
      */
     public function game(Request $request)
-    {
+    {  
+        //Respuestas Máquina
+        $machineNumber = $request->machineNumber;
+
+        //N intentos
+        $tries=$request->tries+1;
+        
+        //Respuestas Usuario
+        $userChoice=intval($request->input('numberChoice'));
+
+
+        $diferencia = abs($userChoice - $machineNumber);
+
+     
     
-        return view ("game");
-    }
+    //Lógica    
+    if($userChoice == $machineNumber){
+        echo "Enhorabuena primo, has acertado en $tries intentos";
+    } elseif ($diferencia <= 5) {
+        echo "La diferencia es menor o igual a 5.";
+    } elseif ($userChoice > $machineNumber){
+        echo "Tira pabajo";
+    } else {
+        echo "Tira parriba";
+    } 
+    
+return view ("game", compact('machineNumber','tries'));
+}
+
+
+
+
+
+
+
+
 
     /**
      * Store a newly created resource in storage.
      */
+   
     public function store(Request $request)
     {
         //
